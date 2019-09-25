@@ -25,8 +25,8 @@ class CreateRecruitersTable extends Migration
             $table->text('mobile')->nullable();
             $table->text('landline')->nullable();
             $table->text('linkedin')->nullable();
-            $table->tinyInteger('notify_when_available')->index();
-            $table->tinyInteger('follow_up_count')->index();
+            $table->boolean('notify_when_available')->default(0)->index();
+            $table->tinyInteger('follow_up_count')->nullable()->index();
             $table->timestamp('latest_note_at')->nullable()->index();
             $table->timestamps();
         });

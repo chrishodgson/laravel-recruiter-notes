@@ -20,7 +20,7 @@ class CreateNotesTable extends Migration
             $table->bigInteger('recruiter_id')->unsigned()->index();
             $table->foreign('recruiter_id')->references('id')->on('recruiters');
             $table->text('details');
-            $table->tinyInteger('follow_up')->index();
+            $table->boolean('follow_up')->default(0)->index();
             $table->timestamps();
         });
     }
