@@ -13,12 +13,12 @@ class CreateRecruitersTable extends Migration
      */
     public function up()
     {
-//        Schema::disableForeignKeyConstraints();
-
         Schema::create('recruiters', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('user_id')->index();
-            $table->bigInteger('company_id')->index();
+            $table->bigInteger('user_id')->unsigned()->index();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->bigInteger('company_id')->unsigned()->index();
+            $table->foreign('company_id')->references('id')->on('companies');
             $table->string('name')->index();
             $table->text('details')->nullable();
             $table->text('email')->nullable();
@@ -30,13 +30,6 @@ class CreateRecruitersTable extends Migration
             $table->timestamp('latest_note_at')->nullable()->index();
             $table->timestamps();
         });
-
-//        Schema::table('recruiters', function (Blueprint $table) {
-//            $table->foreign('user_id')->references('id')->on('users');
-//            $table->foreign('company_id')->references('id')->on('companies');
-//        });
-
-//        Schema::enableForeignKeyConstraints();
     }
 
     /**

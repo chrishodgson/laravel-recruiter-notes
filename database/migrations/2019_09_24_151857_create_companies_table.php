@@ -13,23 +13,14 @@ class CreateCompaniesTable extends Migration
      */
     public function up()
     {
-//        Schema::disableForeignKeyConstraints();
-
         Schema::create('companies', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('user_id')->index();
+            $table->bigInteger('user_id')->unsigned()->index();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('name')->index();
             $table->text('details')->nullable();
             $table->timestamps();
-
         });
-
-//        Schema::table('companies', function (Blueprint $table) {
-//            $table->foreign('user_id')->references('id')->on('users');
-//        });
-
-//        Schema::enableForeignKeyConstraints();
-
     }
 
     /**

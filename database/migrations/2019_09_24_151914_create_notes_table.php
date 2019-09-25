@@ -13,23 +13,16 @@ class CreateNotesTable extends Migration
      */
     public function up()
     {
-//        Schema::disableForeignKeyConstraints();
-
         Schema::create('notes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('user_id')->index();
-            $table->bigInteger('recruiter_id')->index();
+            $table->bigInteger('user_id')->unsigned()->index();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->bigInteger('recruiter_id')->unsigned()->index();
+            $table->foreign('recruiter_id')->references('id')->on('recruiters');
             $table->text('details');
             $table->tinyInteger('follow_up')->index();
             $table->timestamps();
         });
-
-//        Schema::table('notes', function (Blueprint $table) {
-//            $table->foreign('user_id')->references('id')->on('users');
-//            $table->foreign('recruiter_id')->references('id')->on('recruiters');
-//        });
-
-//        Schema::enableForeignKeyConstraints();
     }
 
     /**
