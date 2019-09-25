@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
     {
         $userId = factory(App\User::class)->create()->id;
 
+        // create companies, recruiters for those companies and notes for those recruiters
         factory(App\Company::class, 3)
             ->create(['user_id' => $userId])
             ->each(function ($company) use($userId) {
