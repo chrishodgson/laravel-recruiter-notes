@@ -15,6 +15,5 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/notes', function () {
-    return view('notes');
-});
+Route::resource('notes', 'NoteController');
+

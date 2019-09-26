@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Recruiter extends Model
 {
+    protected $fillable = [
+        'name', 'details', 'email', 'mobile', 'landline', 'linkedin', 'notify_when_available',
+    ];
+
     /**
      * Get the notes for the recruiter.
      */

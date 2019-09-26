@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Note extends Model
 {
+    protected $fillable = [
+        'details', 'follow_up',
+    ];
+
     /**
      * Get the recruiter that owns the note.
      */
