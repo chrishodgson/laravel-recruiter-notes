@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Note;
 use App\Recruiter;
+use Illuminate\Support\Facades\DB;
 
 class NoteController extends Controller
 {
@@ -14,15 +15,25 @@ class NoteController extends Controller
      */
     public function index()
     {
-//        $notes = Notes::all();
+//        $latestNoteQuery = Note::select('details', 'updated_at')
+//            ->whereColumn('recruiter_id', 'recruiters.id')
+//            ->orderBy('updated_at', 'desc')
+//            ->limit(1);
+//
+//        // find latest note for each recruiter
+//        $notes = Recruiter::addSelect(['note_details' => $latestNoteQuery])
+//            ->orderBy('latest_note_at', 'desc')
+//            ->simplePaginate(10);
 
-        $notes = Recruiter::addSelect(['note_details' => Note::select('details')
-            ->whereColumn('recruiter_id', 'recruiters.id')
-            //->orderBy('arrived_at', 'desc')
-            ->limit(1)
-        ])->get();
 
-//        print('<pre>'); print_r($notes); print('</pre>');
+        // to add ->company()
+
+        $notes = DB::table('notes')
+            ->orderBy('updated_at', 'desc')
+            ->groupBy('recruiter_id')
+//            ->recruiter()
+            ->simplePaginate(10);
+        //->get();
 
         return view('notes.index', compact('notes'));
     }

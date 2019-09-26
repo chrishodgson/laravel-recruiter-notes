@@ -16,30 +16,22 @@
             <thead>
             <tr>
                 <td>ID</td>
-                <td>Name</td>
+{{--                <td>Name</td>--}}
                 <td>Note</td>
-                <td colspan="2">Action</td>
             </tr>
             </thead>
             <tbody>
             @foreach($notes as $note)
                 <tr>
                     <td>{{$note->id}}</td>
-                    <td>{{$note->name}}</td>
-                    <td>{{$note->note_details}}</td>
-                    <td>
-{{--                        <a href="{{ route('shows.edit', $show->id)}}" class="btn btn-primary">Edit</a>--}}
-                    </td>
-                    <td>
-{{--                        <form action="{{ route('shows.destroy', $show->id)}}" method="post">--}}
-{{--                            @csrf--}}
-{{--                            @method('DELETE')--}}
-{{--                            <button class="btn btn-danger" type="submit">Delete</button>--}}
-{{--                        </form>--}}
-                    </td>
+{{--                    <td>{{$note->name}}</td>--}}
+                    <td>{{$note->details}}</td>
                 </tr>
             @endforeach
             </tbody>
         </table>
-        <div>
+
+{{--        {{ $notes->links() }}--}}
+
+    <div>
 @endsection
