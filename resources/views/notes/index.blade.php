@@ -17,7 +17,7 @@
             <tr>
                 <td>ID</td>
                 <td>Name</td>
-                <td>Details</td>
+                <td>Note</td>
                 <td colspan="2">Action</td>
             </tr>
             </thead>
@@ -25,8 +25,8 @@
             @foreach($notes as $note)
                 <tr>
                     <td>{{$note->id}}</td>
-                    <td></td>
-                    <td></td>
+                    <td>{{$note->name}}</td>
+                    <td>{{$note->note_details}}</td>
                     <td>
 {{--                        <a href="{{ route('shows.edit', $show->id)}}" class="btn btn-primary">Edit</a>--}}
                     </td>
