@@ -15,9 +15,8 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <td>ID</td>
-                <td>Name</td>
-                <td>Note</td>
+                <td>Recruiter</td>
+                <td>Details</td>
                 <td>Date</td>
                 <td>Follow Up?</td>
             </tr>
@@ -25,10 +24,9 @@
             <tbody>
             @foreach($notes as $note)
                 <tr>
-                    <td>{{$note->id}}</td>
                     <td>{{$note->name}}</td>
                     <td>{{$note->details}}</td>
-                    <td>{{$note->note_updated_at}}</td>
+                    <td>{{(new Carbon\Carbon($note->note_updated_at))->diffForHumans()}}</td>
                     <td>{{$note->follow_up ? 'yes' : 'no'}}</td>
                 </tr>
             @endforeach
