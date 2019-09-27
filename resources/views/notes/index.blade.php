@@ -16,22 +16,25 @@
             <thead>
             <tr>
                 <td>ID</td>
-{{--                <td>Name</td>--}}
+                <td>Name</td>
                 <td>Note</td>
+                <td>Date</td>
+                <td>Follow Up?</td>
             </tr>
             </thead>
             <tbody>
             @foreach($notes as $note)
                 <tr>
                     <td>{{$note->id}}</td>
-{{--                    <td>{{$note->name}}</td>--}}
+                    <td>{{$note->name}}</td>
                     <td>{{$note->details}}</td>
+                    <td>{{$note->note_updated_at}}</td>
+                    <td>{{$note->follow_up ? 'yes' : 'no'}}</td>
                 </tr>
             @endforeach
             </tbody>
         </table>
 
-{{--        {{ $notes->links() }}--}}
-
+        {{ $notes->links() }}
     <div>
 @endsection
