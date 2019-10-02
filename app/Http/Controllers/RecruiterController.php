@@ -49,6 +49,8 @@ class RecruiterController extends Controller
      */
     public function show(Recruiter $recruiter)
     {
-        return view('recruiters.show', ['recruiter' => $recruiter]);
+        return view('recruiters.show', [
+            'recruiter' => $recruiter
+        ])->with('notes', $recruiter->notes()->get());
     }
 }

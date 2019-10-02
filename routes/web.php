@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::resource('companies', 'CompanyController')->only([
+    'index', 'create', 'store', 'edit', 'update', 'destroy'
+]);
+
 Route::resource('recruiters', 'RecruiterController')->only([
-    'index', 'show'
+    'index', 'show', 'create', 'store'
 ]);
