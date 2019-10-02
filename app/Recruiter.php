@@ -11,7 +11,7 @@ class Recruiter extends Model
     ];
 
     /**
-     * Get the notes for the recruiter.
+     * Get the notes for the recruiters.
      */
     public function notes()
     {
@@ -19,7 +19,7 @@ class Recruiter extends Model
     }
 
     /**
-     * Get the company that owns the recruiter.
+     * Get the company that owns the recruiters.
      */
     public function company()
     {
@@ -27,7 +27,7 @@ class Recruiter extends Model
     }
 
     /**
-     * Get the user that owns the recruiter.
+     * Get the user that owns the recruiters.
      */
     public function user()
     {

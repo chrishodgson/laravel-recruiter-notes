@@ -12,7 +12,7 @@
                 {{ session()->get('success') }}
             </div><br />
         @endif
-        <table class="table table-striped">
+        <table class="table table-striped1">
             <thead>
             <tr>
                 <td>Recruiter</td>
@@ -22,17 +22,17 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($notes as $note)
+            @foreach($recruiters as $recruiter)
                 <tr>
-                    <td>{{$note->name}}</td>
-                    <td>{{$note->details}}</td>
-                    <td>{{(new Carbon\Carbon($note->note_updated_at))->diffForHumans()}}</td>
-                    <td>{{$note->follow_up ? 'yes' : 'no'}}</td>
+                    <td><a href="{{route('recruiters.show', ['recruiter' => $recruiter->id])}}">{{$recruiter->name}}</a></td>
+                    <td>{{$recruiter->latest_note_details}}</td>
+                    <td>{{(new Carbon\Carbon($recruiter->latest_note_date))->diffForHumans()}}</td>
+                    <td>{{$recruiter->latest_note_follow_up ? 'yes' : 'no'}}</td>
                 </tr>
             @endforeach
             </tbody>
         </table>
 
-        {{ $notes->links() }}
+        {{ $recruiters->links() }}
     <div>
 @endsection

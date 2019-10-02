@@ -15,5 +15,6 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::resource('notes', 'NoteController');
-
+Route::resource('recruiters', 'RecruiterController')->only([
+    'index', 'show'
+]);

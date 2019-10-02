@@ -11,7 +11,7 @@ class Note extends Model
     ];
 
     /**
-     * Get the recruiter that owns the note.
+     * Get the recruiters that owns the note.
      */
     public function recruiter()
     {
