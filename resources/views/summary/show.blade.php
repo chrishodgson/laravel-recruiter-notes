@@ -1,12 +1,10 @@
 @extends('layout')
 
 @section('content')
-    <style>
-        .uper {
-            margin-top: 40px;
-        }
-    </style>
     <div class="uper">
+
+        <p><a href="{{route('summary.index')}}">Back to Recruiter Summary</a></p>
+
         <h4>Recruiter</h4>
         <table class="table table-striped1">
             <tbody>
@@ -30,6 +28,9 @@
         </table>
 
         <h4>Notes</h4>
+        @if(!empty($notes))
+        <p>No notes found.</p>
+        @else
         <table class="table table-striped">
             <thead>
             <tr>
@@ -43,11 +44,11 @@
                 <tr>
                     <td>{{(new Carbon\Carbon($note->updated_at))->diffForHumans()}}</td>
                     <td>{{$note->details}}</td>
-                    <td>{{$note->latest_note_follow_up ? 'yes' : 'no'}}</td>
+                    <td>{{$note->follow_up ? 'yes' : 'no'}}</td>
                 </tr>
             @endforeach
             </tbody>
         </table>
-
-        <div>
+        @endif
+    <div>
 @endsection

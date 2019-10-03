@@ -18,7 +18,7 @@ class CreateNotesTable extends Migration
             $table->bigInteger('user_id')->unsigned()->default(1)->index();
             $table->foreign('user_id')->references('id')->on('users');
             $table->bigInteger('recruiter_id')->unsigned()->index();
-            $table->foreign('recruiter_id')->references('id')->on('recruiters');
+            $table->foreign('recruiter_id')->references('id')->on('recruiters')->onDelete('cascade');;
             $table->text('details');
             $table->boolean('follow_up')->default(0)->index();
             $table->timestamps();

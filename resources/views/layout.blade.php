@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Laravel 6 CRUD Example</title>
+    <title>Recruiter Notes</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div class="container">

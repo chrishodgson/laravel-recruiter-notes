@@ -1,18 +1,11 @@
 @extends('layout')
 
 @section('content')
-    <style>
-        .uper {
-            margin-top: 40px;
-        }
-    </style>
     <div class="uper">
-        @if(session()->get('success'))
-            <div class="alert alert-success">
-                {{ session()->get('success') }}
-            </div><br />
-        @endif
-        <h4>Recruiters</h4>
+        <h4>Recruiter Summary</h4>
+
+        <p><a href="{{route('recruiters.create')}}">Create Recruiter</a></p>
+
         <table class="table table-striped1">
             <thead>
             <tr>
@@ -25,7 +18,7 @@
             <tbody>
             @foreach($recruiters as $recruiter)
                 <tr>
-                    <td><a href="{{route('recruiters.show', ['recruiter' => $recruiter->id])}}">{{$recruiter->name}}</a></td>
+                    <td><a href="{{route('summary.show', $recruiter->id)}}">{{$recruiter->name}}</a></td>
                     <td>{{$recruiter->latest_note_details}}</td>
                     <td>{{(new Carbon\Carbon($recruiter->latest_note_date))->diffForHumans()}}</td>
                     <td>{{$recruiter->latest_note_follow_up ? 'yes' : 'no'}}</td>

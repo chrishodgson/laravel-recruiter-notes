@@ -1,20 +1,12 @@
 @extends('layout')
 
 @section('content')
-    <style>
-        .uper {
-            margin-top: 40px;
-        }
-    </style>
     <div class="uper">
-        @if(session()->get('success'))
-            <div class="alert alert-success">
-                {{ session()->get('success') }}
-            </div><br />
-        @endif
+        @include('shared.alerts')
 
-        <h4>Companies</h4>
-            <p><a href="{{ route('companies.create') }}" class="btn btn-link btn-sm">Create Company</a></p>
+        <h4>Companies List</h4>
+        <p><a href="{{ route('companies.create') }}" class="btn btn-link btn-sm">Create Company</a></p>
+
         <table class="table table-striped1">
             <thead>
             <tr>
@@ -35,7 +27,8 @@
                         <form action="{{ route('companies.destroy', $company->id)}}" method="post">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-sm btn-outline-secondary" type="submit">Delete</button>
+                            <button class="btn btn-sm btn-outline-secondary" type="submit"
+                                    onclick="return confirm('Are you sure that you want to delete this Company?')">Delete</button>
                         </form>
                     </td>
                 </tr>

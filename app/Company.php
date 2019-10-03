@@ -11,7 +11,7 @@ class Company extends Model
     ];
 
     /**
-     * Get the recruiters for the company.
+     * Get the recruiter for the company.
      */
     public function recruiters()
     {

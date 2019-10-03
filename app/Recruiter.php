@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Recruiter extends Model
 {
     protected $fillable = [
-        'name', 'details', 'email', 'mobile', 'landline', 'linkedin', 'notify_when_available',
+        'name', 'details', 'email', 'mobile', 'landline', 'linkedin', 'notify_when_available', 'company_id',
     ];
 
     /**
-     * Get the notes for the recruiters.
+     * Get the notes for the recruiter.
      */
     public function notes()
     {
@@ -19,7 +19,7 @@ class Recruiter extends Model
     }
 
     /**
-     * Get the company that owns the recruiters.
+     * Get the company that owns the recruiter.
      */
     public function company()
     {
@@ -27,7 +27,7 @@ class Recruiter extends Model
     }
 
     /**
-     * Get the user that owns the recruiters.
+     * Get the user that owns the recruiter.
      */
     public function user()
     {

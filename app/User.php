@@ -38,7 +38,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the companies for the user.
+     * Get the company for the user.
      */
     public function companies()
     {
@@ -46,7 +46,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Get the recruiters for the user.
+     * Get the recruiter for the user.
      */
     public function recruiters()
     {

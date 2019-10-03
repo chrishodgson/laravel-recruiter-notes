@@ -2,55 +2,100 @@
 
 namespace App\Http\Controllers;
 
-use App\Note;
+use App\Company;
 use App\Recruiter;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class RecruiterController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
-        $requireFollowUp = false; //todo get from form post
+        $recruiters = Recruiter::simplePaginate(10);
 
-        // find latest note per recruiters
-        $latestNoteQuery = Note::select(
-            'recruiter_id', 'updated_at', 'details as latest_note_details', 'follow_up as latest_note_follow_up'
-        )->orderBy('updated_at', 'desc')->limit(1);
-
-        if ($requireFollowUp) {
-            $latestNoteQuery->whereColumn('follow_up', DB::Raw(1)); //why do we need DB::Raw ?
-        }
-
-        // get recruiters ordered by latest note at and do a Sub-Query Join on the latest note
-        // https://laravel.com/docs/6.x/queries#joins - Sub-Query Joins
-        $recruiterQuery = Recruiter::joinSub($latestNoteQuery, 'latest_note', function ($join) {
-            $join->on('recruiters.id', '=', 'latest_note.recruiter_id');
-        })->orderBy('latest_note_at', 'desc');
-
-        if ($requireFollowUp) {
-            $recruiterQuery->whereColumn('follow_up_count', '>', DB::Raw(0));
-        }
-
-        $recruiters = $recruiterQuery->simplePaginate(10);
-
-        return view('recruiters.index', compact('recruiters'));
+        return view('recruiter.index', compact('recruiters'));
     }
 
     /**
-     * Display the specified resource.
+     * Show the form for creating a new resource.
      *
-     * @param  \App\Recruiter  $recruiter
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function show(Recruiter $recruiter)
+    public function create()
     {
-        return view('recruiters.show', [
-            'recruiter' => $recruiter
-        ])->with('notes', $recruiter->notes()->get());
+        $companies = Company::pluck('name', 'id')->all();
+
+        return view('recruiter.create')->with('companies', $companies);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param Request $request
+     * @return Response
+     */
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|max:255|unique:recruiters,name',
+            'company_id' => 'required|exists:companies,id',
+        ]);
+        Recruiter::create($validatedData);
+
+        return redirect(route('recruiters.index'))
+            ->with('success', 'Recruiter is successfully saved');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param Recruiter $recruiter
+     * @return Response
+     */
+    public function edit(Recruiter $recruiter)
+    {
+        $companies = Company::pluck('name', 'id')->all();
+
+        return view('recruiter.edit', compact('recruiter'))
+            ->with('companies', $companies);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param Request $request
+     * @param Recruiter $recruiter
+     * @return Response
+     */
+    public function update(Request $request, Recruiter $recruiter)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|max:255|unique:recruiters,name,' . $recruiter->id,
+
+        ]);
+        $recruiter->update($validatedData);
+
+        return redirect(route('recruiters.index'))
+            ->with('success', 'Recruiter is successfully updated');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param Recruiter $recruiter
+     * @return Response
+     * @throws \Exception
+     */
+    public function destroy(Recruiter $recruiter)
+    {
+        $recruiter->delete();
+
+        return redirect(route('recruiters.index'))
+            ->with('success', 'Recruiter is successfully deleted');
     }
 }

@@ -11,14 +11,24 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+//Route::get('/', function () {
+//    return view('home');
+//});
 
-Route::resource('companies', 'CompanyController')->only([
-    'index', 'create', 'store', 'edit', 'update', 'destroy'
+Route::redirect('/', '/summary');
+
+Route::resource('companies', 'CompanyController')->except([
+    'show'
 ]);
 
-Route::resource('recruiters', 'RecruiterController')->only([
-    'index', 'show', 'create', 'store'
+Route::resource('recruiters', 'RecruiterController')->except([
+    'show'
+]);
+
+Route::resource('notes', 'NoteController')->except([
+    'show'
+]);
+
+Route::resource('summary', 'RecruiterSummaryController')->only([
+    'index', 'show'
 ]);

@@ -18,7 +18,7 @@ class CreateRecruitersTable extends Migration
             $table->bigInteger('user_id')->unsigned()->default(1)->index();
             $table->foreign('user_id')->references('id')->on('users');
             $table->bigInteger('company_id')->unsigned()->index();
-            $table->foreign('company_id')->references('id')->on('companies');
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
             $table->string('name')->index();
             $table->text('details')->nullable();
             $table->text('email')->nullable();

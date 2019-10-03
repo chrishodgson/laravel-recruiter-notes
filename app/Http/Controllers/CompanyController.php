@@ -17,7 +17,7 @@ class CompanyController extends Controller
     {
         $companies = Company::simplePaginate(10);
 
-        return view('companies.index', compact('companies'));
+        return view('company.index', compact('companies'));
     }
 
     /**
@@ -27,7 +27,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        return view('companies.create');
+        return view('company.create');
     }
 
     /**
@@ -43,7 +43,8 @@ class CompanyController extends Controller
         ]);
         Company::create($validatedData);
 
-        return redirect('/companies')->with('success', 'Company is successfully saved');
+        return redirect(route('companies.index'))
+            ->with('success', 'Company is successfully saved');
     }
 
     /**
@@ -54,7 +55,7 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
-        return view('companies.edit', compact('company'));
+        return view('company.edit', compact('company'));
     }
 
     /**
@@ -72,7 +73,8 @@ class CompanyController extends Controller
         ]);
         $company->update($validatedData);
 
-        return redirect('/companies')->with('success', 'Company is successfully updated');
+        return redirect(route('companies.index'))
+            ->with('success', 'Company is successfully updated');
     }
 
     /**
@@ -86,6 +88,7 @@ class CompanyController extends Controller
     {
         $company->delete();
 
-        return redirect('/companies')->with('success', 'Company is successfully deleted');
+        return redirect(route('companies.index'))
+            ->with('success', 'Company is successfully deleted');
     }
 }
