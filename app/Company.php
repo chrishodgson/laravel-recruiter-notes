@@ -17,12 +17,4 @@ class Company extends Model
     {
         return $this->hasMany('App\Recruiter');
     }
-
-    /**
-     * Get the user that owns the company.
-     */
-    public function user()
-    {
-        return $this->belongsTo('App\User');
-    }
 }

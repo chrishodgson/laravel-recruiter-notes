@@ -17,12 +17,4 @@ class Note extends Model
     {
         return $this->belongsTo('App\Recruiter');
     }
-
-    /**
-     * Get the user that owns the company.
-     */
-    public function user()
-    {
-        return $this->belongsTo('App\User');
-    }
 }

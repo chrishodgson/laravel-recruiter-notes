@@ -36,28 +36,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    /**
-     * Get the company for the user.
-     */
-    public function companies()
-    {
-        return $this->hasMany('App\Company');
-    }
-
-    /**
-     * Get the recruiter for the user.
-     */
-    public function recruiters()
-    {
-        return $this->hasMany('App\Recruiter');
-    }
-
-    /**
-     * Get the notes for the user.
-     */
-    public function notes()
-    {
-        return $this->hasMany('App\Note');
-    }
 }

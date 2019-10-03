@@ -16,16 +16,16 @@ class RecruiterSummaryController extends Controller
      */
     public function index()
     {
-        $requireFollowUp = false; //todo get from form post
+//        $requireFollowUp = false; //todo get from form post
 
         // find latest note per recruiter
         $latestNoteQuery = Note::select(
             'recruiter_id', 'updated_at', 'details as latest_note_details', 'follow_up as latest_note_follow_up'
         )->orderBy('updated_at', 'desc')->limit(1);
 
-        if ($requireFollowUp) {
-            $latestNoteQuery->whereColumn('follow_up', DB::Raw(1)); //why do we need DB::Raw ?
-        }
+//        if ($requireFollowUp) {
+//            $latestNoteQuery->whereColumn('follow_up', DB::Raw(1)); //why do we need DB::Raw ?
+//        }
 
         // get recruiter ordered by latest note at and do a Sub-Query Join on the latest note
         // https://laravel.com/docs/6.x/queries#joins - Sub-Query Joins
@@ -33,9 +33,9 @@ class RecruiterSummaryController extends Controller
             $join->on('recruiters.id', '=', 'latest_note.recruiter_id');
         })->orderBy('latest_note_at', 'desc');
 
-        if ($requireFollowUp) {
-            $recruiterQuery->whereColumn('follow_up_count', '>', DB::Raw(0));
-        }
+//        if ($requireFollowUp) {
+//            $recruiterQuery->whereColumn('follow_up_count', '>', DB::Raw(0));
+//        }
 
         $recruiters = $recruiterQuery->simplePaginate(10);
 

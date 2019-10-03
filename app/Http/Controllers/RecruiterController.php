@@ -16,7 +16,7 @@ class RecruiterController extends Controller
      */
     public function index()
     {
-        $recruiters = Recruiter::simplePaginate(10);
+        $recruiters = Recruiter::with('company')->simplePaginate(10);
 
         return view('recruiter.index', compact('recruiters'));
     }
@@ -46,6 +46,17 @@ class RecruiterController extends Controller
             'company_id' => 'required|exists:companies,id',
         ]);
         Recruiter::create($validatedData);
+
+//        $validator = Validator::make($request->all(), [
+//            'title' => 'required|unique:posts|max:255',
+//            'body' => 'required',
+//        ]);
+//
+//        if ($validator->fails()) {
+//            return redirect('post/create')
+//                ->withErrors($validator)
+//                ->withInput();
+//        }
 
         return redirect(route('recruiters.index'))
             ->with('success', 'Recruiter is successfully saved');

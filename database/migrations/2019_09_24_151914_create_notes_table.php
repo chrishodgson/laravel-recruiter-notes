@@ -15,8 +15,6 @@ class CreateNotesTable extends Migration
     {
         Schema::create('notes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('user_id')->unsigned()->default(1)->index();
-            $table->foreign('user_id')->references('id')->on('users');
             $table->bigInteger('recruiter_id')->unsigned()->index();
             $table->foreign('recruiter_id')->references('id')->on('recruiters')->onDelete('cascade');;
             $table->text('details');

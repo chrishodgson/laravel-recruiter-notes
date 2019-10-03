@@ -27,6 +27,6 @@
             </tbody>
         </table>
 
-        {{ $recruiters->links() }}
+{{--        {{ $recruiters->links() }}--}}
     <div>
 @endsection

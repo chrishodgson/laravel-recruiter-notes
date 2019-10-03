@@ -10,7 +10,8 @@
         <table class="table table-striped1">
             <thead>
             <tr>
-                <td>Name</td>
+                <td>Recruiter</td>
+                <td>Company</td>
                 <td>Details</td>
                 <td>Updated</td>
                 <td colspan="2">Actions</td>
@@ -20,6 +21,7 @@
             @foreach($recruiters as $recruiter)
                 <tr>
                     <td>{{$recruiter->name}}</td>
+                    <td>{{$recruiter->company->name}}</td>
                     <td>{{$recruiter->details}}</td>
                     <td>{{(new Carbon\Carbon($recruiter->updated_at))->diffForHumans()}}</td>
                     <td><a href="{{ route('recruiters.edit', $recruiter->id)}}" class="btn btn-sm btn-secondary">Edit</a></td>

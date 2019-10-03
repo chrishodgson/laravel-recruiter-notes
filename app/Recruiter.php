@@ -25,12 +25,4 @@ class Recruiter extends Model
     {
         return $this->belongsTo('App\Company');
     }
-
-    /**
-     * Get the user that owns the recruiter.
-     */
-    public function user()
-    {
-        return $this->belongsTo('App\User');
-    }
 }
