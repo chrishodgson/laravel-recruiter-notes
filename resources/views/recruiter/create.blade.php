@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-<div class="card uper">
+    <div class="card uper">
     <div class="card-header">
         Add Recruiters
     </div>
@@ -14,14 +14,16 @@
             <div class="form-group">
                 @csrf
                 <label for="name">Recruiter Name:</label>
-                <input type="text" class="form-control" name="name"/>
+                <input type="text" class="form-control" name="name" value="{{ old('name') }}" />
 
                 <label for="name">Notify when available:</label>
-                <input type="checkbox" class="form-control" name="notify_when_available"/>
+                <input type="checkbox" class="form-control" name="notify_when_available" value="1"
+                        {{ old('notify_when_available') ? "checked" : '' }} />
 
                 <select class="form-control" name="company_id">
+                <option value="">-- Please select --</option>
                 @foreach($companies as $id => $label)
-                    <option value="{{ $id }}">{{ $label }}</option>
+                    <option value="{{ $id }}" {{ old('company_id') == $id ? "selected" : '' }}>{{ $label }}</option>
                 @endforeach
                 </select>
             </div>
