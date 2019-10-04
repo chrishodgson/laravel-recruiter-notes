@@ -11,11 +11,9 @@
 |
 */
 
-//Route::get('/', function () {
-//    return view('home');
-//});
-
-Route::redirect('/', '/summary');
+Route::get('/', ['as' => 'home', function () {
+    return view('welcome');
+}]);
 
 Route::resource('companies', 'CompanyController')->except([
     'show'

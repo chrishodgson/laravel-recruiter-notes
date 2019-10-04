@@ -21,7 +21,7 @@ class RecruiterSummaryController extends Controller
         // find latest note per recruiter
         $latestNoteQuery = Note::select(
             'recruiter_id', 'updated_at', 'details as latest_note_details', 'follow_up as latest_note_follow_up'
-        )->orderBy('updated_at', 'desc')->limit(1);
+        )->orderBy('updated_at', 'desc')->take(1);
 
 //        if ($requireFollowUp) {
 //            $latestNoteQuery->whereColumn('follow_up', DB::Raw(1)); //why do we need DB::Raw ?

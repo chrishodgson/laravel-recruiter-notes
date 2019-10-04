@@ -27,6 +27,7 @@
             </tbody>
         </table>
 
+        <hr/>
         <h4>Notes</h4>
         @if(!empty($notes))
         <p>No notes found.</p>

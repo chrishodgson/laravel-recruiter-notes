@@ -11,19 +11,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $userId = factory(App\User::class)->create()->id;
-
-        // create company, recruiter for those company and notes for those recruiter
+        // create companies, recruiters each company and notes for each recruiter
         factory(App\Company::class, 3)
-            ->create(['user_id' => $userId])
-            ->each(function ($company) use($userId) {
+            ->create()
+            ->each(function ($company) {
                 /** @var $company App\Company */
                 $company->recruiters()->createMany(
-                    factory(App\Recruiter::class, 2)->make(['user_id' => $userId])->toArray()
-                )->each(function ($recruiter) use($userId) {
+                    factory(App\Recruiter::class, 2)->make()->toArray()
+                )->each(function ($recruiter) {
                     /** @var $recruiter App\Recruiter */
                     $recruiter->notes()->createMany(
-                        factory(App\Note::class, 3)->make(['user_id' => $userId])->toArray()
+                        factory(App\Note::class, 3)->make()->toArray()
                     );
                 });
             });

@@ -6,6 +6,7 @@ use App\Company;
 use App\Recruiter;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Validation\Validator;
 
 class RecruiterController extends Controller
 {
@@ -47,16 +48,18 @@ class RecruiterController extends Controller
         ]);
         Recruiter::create($validatedData);
 
-//        $validator = Validator::make($request->all(), [
-//            'title' => 'required|unique:posts|max:255',
-//            'body' => 'required',
-//        ]);
-//
-//        if ($validator->fails()) {
-//            return redirect('post/create')
-//                ->withErrors($validator)
-//                ->withInput();
-//        }
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:255|unique:recruiters,name',
+            'company_id' => 'required|exists:companies,id',
+        ]);
+
+        if ($validator->fails()) {
+            return back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        Recruiter::create($validatedData);
 
         return redirect(route('recruiters.index'))
             ->with('success', 'Recruiter is successfully saved');
