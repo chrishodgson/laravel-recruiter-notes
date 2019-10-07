@@ -2,9 +2,7 @@
 
 @section('content')
     <div class="uper">
-
         <p><a href="{{route('summary.index')}}">Back to Recruiter Summary</a></p>
-
         <h4>Recruiter</h4>
         <table class="table table-striped1">
             <tbody>
@@ -15,6 +13,22 @@
                 <tr>
                     <td>Details</td>
                     <td>{{$recruiter->details}}</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>{{$recruiter->email}}</td>
+                </tr>
+                <tr>
+                    <td>Landline</td>
+                    <td>{{$recruiter->landline}}</td>
+                </tr>
+                <tr>
+                    <td>Mobile</td>
+                    <td>{{$recruiter->mobile}}</td>
+                </tr>
+                <tr>
+                    <td>Linkedin</td>
+                    <td>{{$recruiter->linkedin}}</td>
                 </tr>
                 <tr>
                     <td>Latest Note Date</td>
@@ -29,9 +43,7 @@
 
         <hr/>
         <h4>Notes</h4>
-        @if(!empty($notes))
-        <p>No notes found.</p>
-        @else
+        @if($recruiter->notes->count())
         <table class="table table-striped">
             <thead>
             <tr>
@@ -41,7 +53,7 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($notes as $note)
+            @foreach($recruiter->notes as $note)
                 <tr>
                     <td>{{(new Carbon\Carbon($note->updated_at))->diffForHumans()}}</td>
                     <td>{{$note->details}}</td>
@@ -50,6 +62,8 @@
             @endforeach
             </tbody>
         </table>
+        @else
+            <p>No notes found.</p>
         @endif
     <div>
 @endsection

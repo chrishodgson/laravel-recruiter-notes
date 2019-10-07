@@ -4,8 +4,6 @@
     <div class="uper">
         <h4>Recruiter Summary</h4>
 
-        <p><a href="{{route('recruiters.create')}}">Create Recruiter</a></p>
-
         <table class="table table-striped1">
             <thead>
             <tr>
@@ -17,16 +15,19 @@
             </thead>
             <tbody>
             @foreach($recruiters as $recruiter)
+                @php
+                    $latestNote = $recruiter->latestNote->first();
+                @endphp
                 <tr>
                     <td><a href="{{route('summary.show', $recruiter->id)}}">{{$recruiter->name}}</a></td>
-                    <td>{{$recruiter->latest_note_details}}</td>
+                    <td>{{$latestNote['details']}}</td>
                     <td>{{(new Carbon\Carbon($recruiter->latest_note_date))->diffForHumans()}}</td>
-                    <td>{{$recruiter->latest_note_follow_up ? 'yes' : 'no'}}</td>
+                    <td>{{$latestNote['follow_up'] ? 'yes' : 'no'}}</td>
                 </tr>
             @endforeach
             </tbody>
         </table>
 
-{{--        {{ $recruiters->links() }}--}}
+        {{ $recruiters->links() }}
     <div>
 @endsection

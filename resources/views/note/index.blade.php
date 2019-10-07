@@ -5,7 +5,7 @@
         @include('shared.alerts')
 
         <h4>Notes List</h4>
-        <p><a href="{{ route('notes.create') }}" class="btn btn-link btn-sm">Create Note</a></p>
+        <p><a href="{{ route('notes.create') }}" class="btn btn-link">Create Note</a></p>
 
         <table class="table table-striped1">
             <thead>

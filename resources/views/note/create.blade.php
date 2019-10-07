@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-    <p><a href="{{route('notes.index')}}">Back to Note List</a></p>
+    <p class="uper"><a href="{{route('notes.index')}}">Back to Note List</a></p>
     <div class="card">
         <div class="card-header">
             Add Notes

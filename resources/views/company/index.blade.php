@@ -5,7 +5,7 @@
         @include('shared.alerts')
 
         <h4>Companies List</h4>
-        <p><a href="{{ route('companies.create') }}" class="btn btn-link btn-sm">Create Company</a></p>
+        <p><a href="{{ route('companies.create') }}" class="btn btn-link">Create Company</a></p>
 
         <table class="table table-striped1">
             <thead>
