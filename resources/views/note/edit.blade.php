@@ -18,7 +18,8 @@
                     <textarea class="form-control" name="details">{{ old('details', $note->details) }}</textarea>
 
                     <label for="follow_up">Follow up:</label>
-                    <input type="checkbox" class="form-control" name="follow_up"/>
+                    <input type="checkbox" class="form-control" name="follow_up" value="1"
+                            {{ old('follow_up', $note->follow_up) ? "checked" : '' }} />
 
                     <select class="form-control" name="recruiter_id">
                         @foreach($recruiters as $id => $label)
