@@ -11,7 +11,8 @@
             <thead>
             <tr>
                 <td>Details</td>
-                <td>Recruiters</td>
+                <td>Recruiter</td>
+                <td>Follow Up</td>
                 <td>Updated</td>
                 <td colspan="2">Actions</td>
             </tr>
@@ -21,6 +22,7 @@
                 <tr>
                     <td>{{$note->details}}</td>
                     <td><a href="{{ route('summary.show', $note->recruiter_id)}}">{{$note->recruiter->name}}</a></td>
+                    <td>{{$note->follow_up ? 'yes' : 'no'}}</td>
                     <td>{{(new Carbon\Carbon($note->updated_at))->diffForHumans()}}</td>
                     <td><a href="{{ route('notes.edit', $note->id)}}" class="btn btn-sm btn-secondary">Edit</a></td>
                     <td>

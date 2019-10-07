@@ -1,8 +1,8 @@
 @extends('layout')
 
 @section('content')
-    <div class="card uper">
-        <p><a href="{{route('companies.index')}}">Back to Company List</a></p>
+    <p><a href="{{route('companies.index')}}">Back to Company List</a></p>
+    <div class="card">
         <div class="card-header">
             Add Companies
         </div>

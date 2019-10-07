@@ -1,8 +1,8 @@
 @extends('layout')
 
 @section('content')
-    <div class="card uper">
-        <p><a href="{{route('recruiters.index')}}">Back to Recruiter List</a></p>
+    <p><a href="{{route('recruiters.index')}}">Back to Recruiter List</a></p>
+    <div class="card">
         <div class="card-header">
             Update Recruiters
         </div>

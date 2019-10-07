@@ -12,7 +12,7 @@
                 <td>Recruiter</td>
                 <td>Details</td>
                 <td>Date</td>
-                <td>Follow Up?</td>
+                <td>Follow Up</td>
             </tr>
             </thead>
             <tbody>
