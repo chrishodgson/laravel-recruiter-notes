@@ -16,6 +16,9 @@
                 <label for="name">Recruiter Name:</label>
                 <input type="text" class="form-control" name="name" value="{{ old('name') }}" />
 
+                <label for="details">Details:</label>
+                <textarea class="form-control" name="details">{{ old('details') }}</textarea>
+
                 <label for="name">Notify when available:</label>
                 <input type="checkbox" class="form-control" name="notify_when_available" value="1"
                         {{ old('notify_when_available') ? "checked" : '' }} />

@@ -14,10 +14,10 @@
                 <div class="form-group">
                     @csrf
                     @method('PATCH')
-                    <label for="name">Details:</label>
-                    <input type="text" class="form-control" name="details" value="{{ $note->details }}"/>
+                    <label for="details">Details:</label>
+                    <textarea class="form-control" name="details">{{ old('details', $note->details) }}</textarea>
 
-                    <label for="name">Follow up:</label>
+                    <label for="follow_up">Follow up:</label>
                     <input type="checkbox" class="form-control" name="follow_up"/>
 
                     <select class="form-control" name="recruiter_id">

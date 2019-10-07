@@ -17,7 +17,10 @@
                     <label for="name">Recruiter Name:</label>
                     <input type="text" class="form-control" name="name" value="{{ old('name', $recruiter->name) }}" />
 
-                    <label for="name">Notify when available:</label>
+                    <label for="details">Details:</label>
+                    <textarea class="form-control" name="details">{{ old('details', $recruiter->details) }}</textarea>
+
+                    <label for="notify_when_available">Notify when available:</label>
                     <input type="checkbox" class="form-control" name="notify_when_available" value="1"
                             {{ old('notify_when_available', $recruiter->notify_when_available) ? "checked" : '' }} />
 

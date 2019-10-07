@@ -15,7 +15,10 @@
                     @csrf
                     @method('PATCH')
                     <label for="name">Company Name:</label>
-                    <input type="text" class="form-control" name="name" value="{{ $company->name }}"/>
+                    <input type="text" class="form-control" name="name" value="{{ old('name', $company->name) }}"/>
+
+                    <label for="details">Details:</label>
+                    <textarea class="form-control" name="details">{{ old('details', $company->details) }}</textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Update Company</button>
             </form>

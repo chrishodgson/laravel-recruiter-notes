@@ -14,7 +14,10 @@
             <div class="form-group">
                 @csrf
                 <label for="name">Company Name:</label>
-                <input type="text" class="form-control" name="name"/>
+                <input type="text" class="form-control" name="name" value="{{ old('name') }}" />
+
+                <label for="details">Details:</label>
+                <textarea class="form-control" name="details">{{ old('details') }}</textarea>
             </div>
             <button type="submit" class="btn btn-primary">Create Company</button>
         </form>
