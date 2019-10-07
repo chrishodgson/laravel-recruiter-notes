@@ -42,8 +42,14 @@ class RecruiterController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required|max:255|unique:recruiters,name',
             'company_id' => 'required|exists:companies,id',
+            'name' => 'required|max:255|unique:recruiters,name',
+            'details' => 'max:255',
+            'email' => 'max:255',
+            'mobile' => 'max:255',
+            'landline' => 'max:255',
+            'linkedin' => 'max:255',
+            'follow_up' => 'boolean',
         ]);
         Recruiter::create($validatedData);
 
@@ -75,9 +81,14 @@ class RecruiterController extends Controller
     public function update(Request $request, Recruiter $recruiter)
     {
         $validatedData = $request->validate([
-            'name' => 'required|max:255|unique:recruiters,name,' . $recruiter->id,
             'company_id' => 'required|exists:companies,id',
-
+            'name' => 'required|max:255|unique:recruiters,name,' . $recruiter->id,
+            'details' => 'max:255',
+            'email' => 'max:255',
+            'mobile' => 'max:255',
+            'landline' => 'max:255',
+            'linkedin' => 'max:255',
+            'follow_up' => 'boolean',
         ]);
         $recruiter->update($validatedData);
 

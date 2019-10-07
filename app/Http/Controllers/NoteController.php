@@ -43,7 +43,9 @@ class NoteController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
+            'recruiter_id' => 'required|exists:recruiters,id',
             'details' => 'required',
+            'follow_up' => 'boolean',
         ]);
         Note::create($validatedData);
 
@@ -75,7 +77,9 @@ class NoteController extends Controller
     public function update(Request $request, Note $note)
     {
         $validatedData = $request->validate([
+            'recruiter_id' => 'required|exists:recruiters,id',
             'details' => 'required',
+            'follow_up' => 'boolean',
         ]);
         $note->update($validatedData);
 
