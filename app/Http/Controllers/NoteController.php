@@ -30,8 +30,7 @@ class NoteController extends Controller
     {
         $recruiters = Recruiter::pluck('name', 'id')->all();
 
-        return view('note.edit', compact('recruiter'))
-            ->with('recruiters', $recruiters);
+        return view('note.create')->with('recruiters', $recruiters);
     }
 
     /**
