@@ -11,14 +11,6 @@ class Recruiter extends Model
     ];
 
     /**
-     * Get the latest notes for the recruiter.
-     */
-    public function latestNote()
-    {
-        return $this->notes()->orderBy('updated_at')->take(1);
-    }
-
-    /**
      * Get the notes for the recruiter.
      */
     public function notes()

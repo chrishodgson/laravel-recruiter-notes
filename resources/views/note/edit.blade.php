@@ -18,7 +18,7 @@
                     <div class="form-check">
                         <input type="checkbox" class="form-check-input" id="follow_up" name="follow_up" value="1"
                                 {{ old('follow_up', $note->follow_up) ? "checked" : '' }} />
-                        <label class="form-check-label" for="follow_up">Follow up:</label>
+                        <label class="form-check-label" for="follow_up">Follow up</label>
                     </div>
 
                     <select class="form-control" name="recruiter_id">

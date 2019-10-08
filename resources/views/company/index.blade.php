@@ -22,8 +22,8 @@
                     <td>{{$company->name}}</td>
                     <td>{{$company->details}}</td>
                     <td>{{(new Carbon\Carbon($company->updated_at))->diffForHumans()}}</td>
-                    <td><a href="{{ route('companies.edit', $company->id)}}" class="btn btn-sm btn-secondary">Edit</a></td>
                     <td>
+                        <a href="{{ route('companies.edit', $company->id)}}" class="btn btn-sm btn-secondary">Edit</a>
                         <form action="{{ route('companies.destroy', $company->id)}}" method="post">
                             @csrf
                             @method('DELETE')

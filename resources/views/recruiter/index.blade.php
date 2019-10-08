@@ -13,8 +13,10 @@
                 <td>Recruiter</td>
                 <td>Company</td>
                 <td>Details</td>
+                <td>Notify when<br>Available</td>
+                <td>Follow Up<br>Count</td>
                 <td>Updated</td>
-                <td colspan="2">Actions</td>
+                <td>Actions</td>
             </tr>
             </thead>
             <tbody>
@@ -23,9 +25,11 @@
                     <td>{{$recruiter->name}}</td>
                     <td>{{$recruiter->company->name}}</td>
                     <td>{{$recruiter->details}}</td>
+                    <td>{{$recruiter->notify_when_available ? 'Yes' : 'No'}}</td>
+                    <td>{{$recruiter->follow_up_count}}</td>
                     <td>{{(new Carbon\Carbon($recruiter->updated_at))->diffForHumans()}}</td>
-                    <td><a href="{{ route('recruiters.edit', $recruiter->id)}}" class="btn btn-sm btn-secondary">Edit</a></td>
                     <td>
+                        <a href="{{ route('recruiters.edit', $recruiter->id)}}" class="btn btn-sm btn-secondary">Edit</a>
                         <form action="{{ route('recruiters.destroy', $recruiter->id)}}" method="post">
                             @csrf
                             @method('DELETE')

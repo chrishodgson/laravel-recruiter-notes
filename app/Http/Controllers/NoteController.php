@@ -46,6 +46,8 @@ class NoteController extends Controller
             'details' => 'required',
             'follow_up' => 'boolean',
         ]);
+        $validatedData['follow_up'] = $request->input('follow_up', false);
+        $this->updateRecruiter($request);
         Note::create($validatedData);
 
         return redirect(route('notes.index'))
@@ -80,7 +82,9 @@ class NoteController extends Controller
             'details' => 'required',
             'follow_up' => 'boolean',
         ]);
+        $validatedData['follow_up'] = $request->input('follow_up', false);
         $note->update($validatedData);
+        $this->updateRecruiter($request, $note);
 
         return redirect(route('notes.index'))
             ->with('success', 'Note is successfully updated');
@@ -99,5 +103,22 @@ class NoteController extends Controller
 
         return redirect(route('notes.index'))
             ->with('success', 'Note is successfully deleted');
+    }
+
+    /**
+     * @param Request $request
+     * @param Note|null $note
+     */
+    private function updateRecruiter(Request $request, Note $note = null)
+    {
+        $recruiter = Recruiter::findOrFail($request->recruiter_id);
+        $recruiter->latest_note_at = new \DateTime();
+
+        if ($request->follow_up) {
+            if (!$note || ($note && !$note->follow_up)) {
+                $recruiter->follow_up_count++;
+            }
+        }
+        $recruiter->save();
     }
 }

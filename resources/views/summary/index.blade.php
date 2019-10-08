@@ -15,15 +15,12 @@
             </thead>
             <tbody>
             @foreach($recruiters as $recruiter)
-                @php
-                    $latestNote = $recruiter->latestNote->first();
-                @endphp
-                <tr>
-                    <td><a href="{{route('summary.show', $recruiter->id)}}">{{$recruiter->name}}</a></td>
-                    <td>{{$latestNote['details']}}</td>
-                    <td>{{(new Carbon\Carbon($recruiter->latest_note_date))->diffForHumans()}}</td>
-                    <td>{{$latestNote['follow_up'] ? 'yes' : 'no'}}</td>
-                </tr>
+            <tr>
+                <td><a href="{{route('summary.show', $recruiter->id)}}">{{$recruiter->name}}</a></td>
+                <td>{{$recruiter->latest_note_details}}</td>
+                <td>{{(new Carbon\Carbon($recruiter->latest_note_at))->diffForHumans()}}</td>
+                <td>{{$recruiter->latest_note_follow_up ? 'yes' : 'no'}}</td>
+            </tr>
             @endforeach
             </tbody>
         </table>

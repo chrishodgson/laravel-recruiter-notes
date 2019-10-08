@@ -49,8 +49,9 @@ class RecruiterController extends Controller
             'mobile' => 'max:255',
             'landline' => 'max:255',
             'linkedin' => 'max:255',
-            'follow_up' => 'boolean',
+            'notify_when_available' => 'boolean',
         ]);
+        $validatedData['notify_when_available'] = $request->input('notify_when_available', false);
         Recruiter::create($validatedData);
 
         return redirect(route('recruiters.index'))
@@ -88,8 +89,9 @@ class RecruiterController extends Controller
             'mobile' => 'max:255',
             'landline' => 'max:255',
             'linkedin' => 'max:255',
-            'follow_up' => 'boolean',
+            'notify_when_available' => 'boolean',
         ]);
+        $validatedData['notify_when_available'] = $request->input('notify_when_available', false);
         $recruiter->update($validatedData);
 
         return redirect(route('recruiters.index'))

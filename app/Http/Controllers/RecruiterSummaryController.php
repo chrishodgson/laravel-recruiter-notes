@@ -9,31 +9,30 @@ use Illuminate\Http\Response;
 class RecruiterSummaryController extends Controller
 {
     /**
-     * https://laravel.com/docs/6.x/queries#joins - Sub-Query Joins
-     * get recruiter ordered by latest note at and do a Sub-Query Join on the latest note
-     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index2()
+    public function index()
     {
-        $latestNoteQuery = Note::select(
-            'recruiter_id', 'updated_at', 'details as latest_note_details', 'follow_up as latest_note_follow_up'
-        )->orderBy('updated_at', 'desc')->take(1);
-
-        $recruiters = Recruiter::joinSub($latestNoteQuery, 'latest_note', function ($join) {
-            $join->on('recruiters.id', '=', 'latest_note.recruiter_id');
-        })->orderBy('latest_note_at', 'desc')
-          ->simplePaginate(10);
+        $recruiters = Recruiter::addSelect(['latest_note_details' => Note::select('details')
+            ->whereColumn('recruiter_id', 'recruiters.id')
+            ->orderBy('updated_at', 'desc')
+            ->limit(1)
+        ])->addSelect(['latest_note_follow_up' => Note::select('follow_up')
+            ->whereColumn('recruiter_id', 'recruiters.id')
+            ->orderBy('updated_at', 'desc')
+            ->limit(1)
+        ])->whereNotNull('latest_note_at')->simplePaginate(10);
 
         return view('summary.index', compact('recruiters'));
     }
+
 
     /**
      * Display a listing of the resource.
      *
      * @return Response
      */
-    public function index()
+    public function indexOld()
     {
         $recruiters = Recruiter::with('latestNote')->simplePaginate(10);
 

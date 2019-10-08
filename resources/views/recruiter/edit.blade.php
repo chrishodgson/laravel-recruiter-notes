@@ -33,7 +33,7 @@
                     <div class="form-check">
                         <input type="checkbox" class="form-check-input" id="notify_when_available" name="notify_when_available" value="1"
                                 {{ old('notify_when_available', $recruiter->notify_when_available) ? "checked" : '' }} />
-                        <label class="form-check-label" for="notify_when_available">Notify when available:</label>
+                        <label class="form-check-label" for="notify_when_available">Notify when available</label>
                     </div>
 
                     <select class="form-control" name="company_id">
