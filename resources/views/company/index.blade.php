@@ -13,7 +13,7 @@
                 <td>Name</td>
                 <td>Details</td>
                 <td>Updated</td>
-                <td colspan="2">Actions</td>
+                <td>Actions</td>
             </tr>
             </thead>
             <tbody>
@@ -21,10 +21,9 @@
                 <tr>
                     <td>{{$company->name}}</td>
                     <td>{{$company->details}}</td>
-                    <td>{{(new Carbon\Carbon($company->updated_at))->diffForHumans()}}</td>
-                    <td>
+                    <td>{{(new Carbon\Carbon($company->updated_at))->diffForHumans()}}
                         <a href="{{ route('companies.edit', $company->id)}}" class="btn btn-sm btn-secondary">Edit</a>
-                        <form action="{{ route('companies.destroy', $company->id)}}" method="post">
+                        <form class="d-inline-block" action="{{ route('companies.destroy', $company->id)}}" method="post">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-sm btn-outline-secondary" type="submit"

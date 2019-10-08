@@ -26,7 +26,7 @@
                     <td>{{(new Carbon\Carbon($note->updated_at))->diffForHumans()}}</td>
                     <td>
                         <a href="{{ route('notes.edit', $note->id)}}" class="btn btn-sm btn-secondary">Edit</a>
-                        <form action="{{ route('notes.destroy', $note->id)}}" method="post">
+                        <form class="d-inline-block" action="{{ route('notes.destroy', $note->id)}}" method="post">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-sm btn-outline-secondary" type="submit"

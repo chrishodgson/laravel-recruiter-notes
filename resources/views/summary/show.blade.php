@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="uper">
-        <p><a href="{{route('summary.index')}}">Back to Recruiter Summary</a></p>
+        <p><a href="#" onclick="window.history.back();">Back to previous page</a></p>
         <h4>Recruiter</h4>
         <table class="table table-striped1">
             <tbody>
@@ -16,19 +16,19 @@
                 </tr>
                 <tr>
                     <td>Email</td>
-                    <td>{{$recruiter->email}}</td>
+                    <td><a href="mailto:{{$recruiter->email}}">{{$recruiter->email}}</a></td>
                 </tr>
                 <tr>
                     <td>Landline</td>
-                    <td>{{$recruiter->landline}}</td>
+                    <td><a href="tel:{{$recruiter->landline}}">{{$recruiter->landline}}</a></td>
                 </tr>
                 <tr>
                     <td>Mobile</td>
-                    <td>{{$recruiter->mobile}}</td>
+                    <td><a href="tel:{{$recruiter->mobile}}">{{$recruiter->mobile}}</a></td>
                 </tr>
                 <tr>
                     <td>Linkedin</td>
-                    <td>{{$recruiter->linkedin}}</td>
+                    <td><a href="{{$recruiter->linkedin}}">{{$recruiter->linkedin}}</a></td>
                 </tr>
                 <tr>
                     <td>Latest Note Date</td>
