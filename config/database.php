@@ -1,5 +1,8 @@
 <?php
 
+//get the environment variables from heroku hosting
+$heroku = parse_url(getenv("DATABASE_URL"));
+
 use Illuminate\Support\Str;
 
 return [
@@ -15,7 +18,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'pgsql-heroku'),
 
     /*
     |--------------------------------------------------------------------------
@@ -76,6 +79,19 @@ return [
             'prefix_indexes' => true,
             'schema' => 'public',
             'sslmode' => 'prefer',
+        ],
+
+        'pgsql-heroku' => [
+            'driver' => 'pgsql',
+            'host' => $heroku["host"],
+            'port' => $heroku["port"],
+            'database' => ltrim($heroku["path"], "/"),
+            'username' => $heroku["user"],
+            'password' => $heroku["pass"],
+            'charset' => 'utf8',
+            'prefix' => '',
+            'schema' => 'public',
+            'sslmode' => 'require',
         ],
 
         'sqlsrv' => [

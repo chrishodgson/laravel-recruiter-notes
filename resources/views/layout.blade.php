@@ -31,7 +31,7 @@
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
-                <a class="btn btn-sm btn-light" href="{{ route('notes.create') }}">Create Note</a>
+                <a class="btn btn-sm btn-secondary" href="{{ route('notes.create') }}">Create Note</a>
             </form>
         </div>
     </nav>
