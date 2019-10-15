@@ -11,6 +11,7 @@
             <thead>
             <tr>
                 <td>Title</td>
+                <td>Details</td>
                 <td>Recruiter</td>
                 <td>Follow Up</td>
                 <td>Updated</td>
@@ -22,6 +23,8 @@
                 <tr>
                     <td>
                         {{$note->title}}
+                    </td>
+                    <td>
                         @if($note->details)
                             <a href="{{ route('notes.show', $note->id)}}" class="btn btn-sm btn-light ml-1">View</a>
                         @endif
