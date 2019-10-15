@@ -14,7 +14,8 @@ class AddTitleToNotesTable extends Migration
     public function up()
     {
         Schema::table('notes', function (Blueprint $table) {
-            $table->string('title');
+            $table->string('title')->nullable();
+            $table->text('details')->nullable()->change();
         });
     }
 
@@ -26,7 +27,8 @@ class AddTitleToNotesTable extends Migration
     public function down()
     {
         Schema::table('notes', function (Blueprint $table) {
-            $table->dropColumn('title');
+            $table->dropColumn('title')->nullable(false);
+            $table->text('details')->nullable(false)->change();
         });
     }
 }
