@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-    <p class="uper"><a href="{{route('notes.index')}}">Back to Note List</a></p>
+    @include('shared.back')
     <div class="card">
         <div class="card-header">
             Update Notes
@@ -12,8 +12,11 @@
                 <div class="form-group">
                     @csrf
                     @method('PATCH')
+                    <label for="name">Title:</label>
+                    <input type="text" class="form-control" id="title" name="title" value="{{ old('title', $note->title) }}" />
+
                     <label for="details">Details:</label>
-                    <textarea class="form-control" id="name" name="details">{{ old('details', $note->details) }}</textarea>
+                    <textarea class="form-control" id="details" name="details">{{ old('details', $note->details) }}</textarea>
 
                     <div class="form-check">
                         <input type="checkbox" class="form-check-input" id="follow_up" name="follow_up" value="1"

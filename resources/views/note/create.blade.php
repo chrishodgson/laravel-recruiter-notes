@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-    <p class="uper"><a href="{{route('notes.index')}}">Back to Note List</a></p>
+    @include('shared.back')
     <div class="card">
         <div class="card-header">
             Add Notes
@@ -11,6 +11,9 @@
             <form method="post" action="{{ route('notes.store') }}">
                 <div class="form-group">
                     @csrf
+                    <label for="name">Title:</label>
+                    <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}" />
+
                     <label for="details">Details:</label>
                     <textarea class="form-control" id="details" name="details">{{ old('details') }}</textarea>
 

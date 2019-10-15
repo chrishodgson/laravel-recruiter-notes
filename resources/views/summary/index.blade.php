@@ -4,7 +4,7 @@
     <div class="uper">
         <h4>Recruiter Summary</h4>
 
-        <table class="table table-striped1">
+        <table class="table table-striped">
             <thead>
             <tr>
                 <td>Recruiter</td>

@@ -7,10 +7,10 @@
         <h4>Notes List</h4>
         <p><a href="{{ route('notes.create') }}" class="btn btn-link">Create Note</a></p>
 
-        <table class="table table-striped1">
+        <table class="table table-striped">
             <thead>
             <tr>
-                <td>Details</td>
+                <td>Title</td>
                 <td>Recruiter</td>
                 <td>Follow Up</td>
                 <td>Updated</td>
@@ -20,7 +20,12 @@
             <tbody>
             @foreach($notes as $note)
                 <tr>
-                    <td>{{$note->details}}</td>
+                    <td>
+                        {{$note->title}}
+                        @if($note->details)
+                            <a href="{{ route('notes.show', $note->id)}}" class="btn btn-sm btn-light ml-1">View</a>
+                        @endif
+                    </td>
                     <td><a href="{{ route('summary.show', $note->recruiter_id)}}">{{$note->recruiter->name}}</a></td>
                     <td>{{$note->follow_up ? 'Yes' : 'No'}}</td>
                     <td>{{(new Carbon\Carbon($note->updated_at))->diffForHumans()}}</td>

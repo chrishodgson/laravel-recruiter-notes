@@ -15,18 +15,10 @@ Route::get('/', ['as' => 'home', function () {
     return view('welcome');
 }]);
 
-Route::resource('companies', 'CompanyController')->except([
-    'show'
-]);
+Route::resource('companies', 'CompanyController')->except(['show']);
 
-Route::resource('recruiters', 'RecruiterController')->except([
-    'show'
-]);
+Route::resource('recruiters', 'RecruiterController')->except(['show']);
 
-Route::resource('notes', 'NoteController')->except([
-    'show'
-]);
+Route::resource('notes', 'NoteController');
 
-Route::resource('summary', 'RecruiterSummaryController')->only([
-    'index', 'show'
-]);
+Route::resource('summary', 'RecruiterSummaryController')->only(['index', 'show']);

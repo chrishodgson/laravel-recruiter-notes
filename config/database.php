@@ -83,11 +83,11 @@ return [
 
         'pgsql-heroku' => [
             'driver' => 'pgsql',
-            'host' => $heroku["host"],
-            'port' => $heroku["port"],
-            'database' => ltrim($heroku["path"], "/"),
-            'username' => $heroku["user"],
-            'password' => $heroku["pass"],
+            'host' => $heroku["host"] ?? '',
+            'port' => $heroku["port"] ?? '',
+            'database' => ltrim($heroku["path"] ?? '', "/"),
+            'username' => $heroku["user"] ?? '',
+            'password' => $heroku["pass"] ?? '',
             'charset' => 'utf8',
             'prefix' => '',
             'schema' => 'public',

@@ -26,19 +26,6 @@ class RecruiterSummaryController extends Controller
         return view('summary.index', compact('recruiters'));
     }
 
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function indexOld()
-    {
-        $recruiters = Recruiter::with('latestNote')->simplePaginate(10);
-
-        return view('summary.index', compact('recruiters'));
-    }
-
     /**
      * Display the specified resource.
      *
@@ -52,6 +39,5 @@ class RecruiterSummaryController extends Controller
         return view('summary.show', [
             'recruiter' => $recruiter
         ]);
-
     }
 }

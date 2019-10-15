@@ -22,6 +22,21 @@ class NoteController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     * @return Response
+     */
+    public function show($id)
+    {
+        $note = Note::with('recruiter')->findOrFail($id);
+
+        return view('note.show', [
+            'note' => $note
+        ]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return Response
@@ -43,7 +58,8 @@ class NoteController extends Controller
     {
         $validatedData = $request->validate([
             'recruiter_id' => 'required|exists:recruiters,id',
-            'details' => 'required',
+            'title' => 'required|max:255',
+            'details' => 'max:1000',
             'follow_up' => 'boolean',
         ]);
         $validatedData['follow_up'] = $request->input('follow_up', false);
@@ -79,7 +95,8 @@ class NoteController extends Controller
     {
         $validatedData = $request->validate([
             'recruiter_id' => 'required|exists:recruiters,id',
-            'details' => 'required',
+            'title' => 'required|max:255',
+            'details' => 'max:1000',
             'follow_up' => 'boolean',
         ]);
         $validatedData['follow_up'] = $request->input('follow_up', false);

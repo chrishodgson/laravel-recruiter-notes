@@ -7,7 +7,7 @@
         <h4>Recruiters List</h4>
         <p><a href="{{ route('recruiters.create') }}" class="btn btn-link">Create Recruiter</a></p>
 
-        <table class="table table-striped1">
+        <table class="table table-striped">
             <thead>
             <tr>
                 <td>Recruiter</td>
