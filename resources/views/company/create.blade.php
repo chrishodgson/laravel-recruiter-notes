@@ -15,7 +15,7 @@
                     <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" />
 
                     <label for="details">Details:</label>
-                    <textarea class="form-control" id="details" name="details">{{ old('details') }}</textarea>
+                    <textarea class="form-control" id="details" name="details" rows="3">{{ old('details') }}</textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Create Company</button>
             </form>

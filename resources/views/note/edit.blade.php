@@ -16,7 +16,7 @@
                     <input type="text" class="form-control" id="title" name="title" value="{{ old('title', $note->title) }}" />
 
                     <label for="details">Details:</label>
-                    <textarea class="form-control" id="details" name="details">{{ old('details', $note->details) }}</textarea>
+                    <textarea class="form-control" id="details" name="details" rows="5">{{ old('details', $note->details) }}</textarea>
 
                     <div class="form-check">
                         <input type="checkbox" class="form-check-input" id="follow_up" name="follow_up" value="1"

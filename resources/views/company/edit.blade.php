@@ -16,7 +16,7 @@
                     <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $company->name) }}"/>
 
                     <label for="details">Details:</label>
-                    <textarea class="form-control" id="details" name="details">{{ old('details', $company->details) }}</textarea>
+                    <textarea class="form-control" id="details" name="details" rows="3">{{ old('details', $company->details) }}</textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Update Company</button>
             </form>

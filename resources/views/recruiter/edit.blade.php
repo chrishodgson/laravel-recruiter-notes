@@ -16,7 +16,7 @@
                     <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $recruiter->name) }}" />
 
                     <label for="details">Details:</label>
-                    <textarea class="form-control" id="details" name="details">{{ old('details', $recruiter->details) }}</textarea>
+                    <textarea class="form-control" id="details" name="details" rows="3">{{ old('details', $recruiter->details) }}</textarea>
 
                     <label for="email">Email:</label>
                     <input type="text" class="form-control" id="email" name="email" value="{{ old('email', $recruiter->email) }}" />
