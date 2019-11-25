@@ -21,4 +21,6 @@ Route::resource('recruiters', 'RecruiterController')->except(['show']);
 
 Route::resource('notes', 'NoteController');
 
+Route::resource('quicknotes', 'QuickNoteController')->only(['create', 'store']);
+
 Route::resource('summary', 'RecruiterSummaryController')->only(['index', 'show']);

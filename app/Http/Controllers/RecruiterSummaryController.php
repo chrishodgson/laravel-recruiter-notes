@@ -21,7 +21,7 @@ class RecruiterSummaryController extends Controller
             ->whereColumn('recruiter_id', 'recruiters.id')
             ->orderBy('updated_at', 'desc')
             ->limit(1)
-        ])->whereNotNull('latest_note_at')->simplePaginate(10);
+        ])->whereNotNull('latest_note_at')->orderBy('latest_note_at', 'desc')->simplePaginate(10);
 
         return view('summary.index', compact('recruiters'));
     }

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="uper">
-        <h4>Recruiter Summary</h4>
+        <h4>Summary - latest note per recruiter</h4>
 
         <table class="table table-striped">
             <thead>

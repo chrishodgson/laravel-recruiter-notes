@@ -16,7 +16,7 @@ class RecruiterController extends Controller
      */
     public function index()
     {
-        $recruiters = Recruiter::with('company')->simplePaginate(10);
+        $recruiters = Recruiter::orderBy('id', 'desc')->with('company')->simplePaginate(10);
 
         return view('recruiter.index', compact('recruiters'));
     }

@@ -16,7 +16,7 @@ class NoteController extends Controller
      */
     public function index()
     {
-        $notes = Note::with('recruiter')->simplePaginate(10);
+        $notes = Note::orderBy('id', 'desc')->with('recruiter')->simplePaginate(10);
 
         return view('note.index', compact('notes'));
     }
